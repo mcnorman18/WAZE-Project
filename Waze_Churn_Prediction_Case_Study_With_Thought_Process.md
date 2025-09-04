@@ -1,5 +1,5 @@
 
-# Waze Churn Prediction Project – Data Inspection)
+# Waze Churn Prediction Project – Data Inspection
 
 ---
 
