@@ -24,7 +24,7 @@ df.head(10)
 df.info()
 ```  
 
-**Result / Thought Process:** Confirmed file integrity, row/column counts, and presence of missing values.   
+**Results:** Confirmed file integrity, row/column counts, and presence of missing values.   
 
 ---
 
@@ -43,7 +43,7 @@ df_nulls['device'].value_counts(normalize=True) * 100
 df['device'].value_counts(normalize=True) * 100
 ```  
 
-**Result / Thought Process:** About 700 rows missing churn labels. Distributions were consistent with non-missing rows, suggesting randomness. No device skew → missingness not likely a problem.  
+**Results:** About 700 rows missing churn labels. Distributions were consistent with non-missing rows, suggesting randomness. No device skew → missingness not likely a problem.  
 
 ---
 
@@ -55,7 +55,7 @@ df['device'].value_counts(normalize=True) * 100
 df['label'].value_counts(normalize=True) * 100
 ```  
 
-**Result / Thought Process:** ~82% retained, 18% churned.
+**Results:** ~82% retained, 18% churned.
 
 ---
 
@@ -67,7 +67,7 @@ df['label'].value_counts(normalize=True) * 100
 df.groupby('label').median(numeric_only=True)
 ```  
 
-**Result / Thought Process:**  
+**Results:**  
 - Churned users = more drives in fewer days, longer distances, more hours.  
 - Retained users = steadier driving spread across more days.  
 - Suggests churn is linked to intensity of driving behavior.  
@@ -86,7 +86,7 @@ df['drives_per_driving_day'] = df['drives'] / df['driving_days']
 df.groupby('label').median()[['km_per_drive','km_per_driving_day','drives_per_driving_day']]
 ```  
 
-**Result / Thought Process:** Churned users were “super-drivers” with higher distances and more drives per day.  
+**Results:** Churned users were “super-drivers” with higher distances and more drives per day.  
 These engineered features provide valuable signals for churn prediction.  
 
 ---
@@ -99,7 +99,7 @@ These engineered features provide valuable signals for churn prediction.
 df.groupby('label')['device'].value_counts(normalize=True) * 100
 ```  
 
-**Result / Thought Process:** Device ratios were consistent across churned and retained groups. Device type is not a churn driver.  
+**Results:** Device ratios were consistent across churned and retained groups. Device type is not a churn driver.  
 
 ---
 
