@@ -1,7 +1,5 @@
 
-# Waze Churn Prediction Project (Course 2 – Data Inspection)
-
-**Prepared by:** Matthew Norman  
+# Waze Churn Prediction Project – Data Inspection)
 
 ---
 
@@ -26,8 +24,7 @@ df.head(10)
 df.info()
 ```  
 
-**Result / Thought Process:** Confirmed file integrity, row/column counts, and presence of missing values.  
-If needed, I would convert dates with `pd.to_datetime` and make categorical columns explicit.  
+**Result / Thought Process:** Confirmed file integrity, row/column counts, and presence of missing values.   
 
 ---
 
@@ -50,15 +47,15 @@ df['device'].value_counts(normalize=True) * 100
 
 ---
 
-### 3. Class Balance  
-**Why:** Understand churn prevalence and anticipate modeling tactics.  
+### 3. Churn vs Retained Users  
+**Why:** Understand churn prevalence  
 **Questions:** How imbalanced is the target?  
 
 ```python
 df['label'].value_counts(normalize=True) * 100
 ```  
 
-**Result / Thought Process:** ~82% retained, 18% churned. Moderate imbalance, so I’d plan to use stratified sampling and precision-focused metrics for modeling.  
+**Result / Thought Process:** ~82% retained, 18% churned.
 
 ---
 
@@ -102,22 +99,12 @@ These engineered features provide valuable signals for churn prediction.
 df.groupby('label')['device'].value_counts(normalize=True) * 100
 ```  
 
-**Result / Thought Process:** Device ratios were consistent across churned and retained groups.  
-Device type is not a churn driver.  
+**Result / Thought Process:** Device ratios were consistent across churned and retained groups. Device type is not a churn driver.  
 
 ---
 
 ## Key Takeaways  
-- Missing values are random → dataset is suitable for modeling.  
+- Missing values are random → dataset is suitable. 
 - Device type does not influence churn.  
 - Churned users are higher-intensity drivers; retained users drive more consistently.  
 - Engineered features (km per drive, drives per day) provide valuable predictors for churn.  
-
----
-
-## Value to Recruiters  
-This project demonstrates my ability to:  
-- Inspect and clean real-world datasets  
-- Apply **Python (pandas, numpy)** for wrangling and feature creation  
-- Use statistical reasoning (medians vs. means) to manage outliers  
-- Translate raw code outputs into **business insights** that inform strategy  
